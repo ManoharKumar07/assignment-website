@@ -1,0 +1,13 @@
+.form-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+.formw {
+  width: 25%;
+  border: 1px solid gray;
+  padding: 25px;
+  border-radius: 5px;
+}
