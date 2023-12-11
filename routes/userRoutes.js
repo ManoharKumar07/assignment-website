@@ -5,6 +5,7 @@ const {
   authController,
   applyTeacherController,
   getAllNotificationController,
+  deleteAllNotificationController,
 } = require("../controllers/userCtrl");
 const authMiddleware = require("../middlewares/authMiddleware");
 
@@ -32,11 +33,11 @@ router.post(
 );
 
 //delete all notification
-// router.post(
-//   "/delete-all-notification",
-//   authMiddleware,
-//   deleteAllNotificationController
-// );
+router.post(
+  "/delete-all-notification",
+  authMiddleware,
+  deleteAllNotificationController
+);
 
 //GET ALL teacher
 // router.get("/getAllTeachers", authMiddleware, getAllTeachersController);

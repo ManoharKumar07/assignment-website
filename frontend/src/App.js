@@ -10,6 +10,9 @@ import ProtectedRoute from "./Components/ProtectesRoute";
 import PublicRoute from "./Components/PublicRoute";
 import ApplyTeacher from "./Pages/ApplyTeacher";
 import NotificationPage from "./Pages/NotificationPage";
+import Users from "./Pages/admin/Users";
+import Teachers from "./Pages/admin/Teachers";
+import Bookingpage from "./Pages/Bookingpage";
 
 function App() {
   const { loading } = useSelector((state) => state.alerts);
@@ -57,6 +60,38 @@ function App() {
               element={
                 <ProtectedRoute>
                   <NotificationPage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/students"
+              element={
+                <ProtectedRoute>
+                  <Users />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/teachers"
+              element={
+                <ProtectedRoute>
+                  <Teachers />
+                </ProtectedRoute>
+              }
+            />
+            {/* <Route
+              path="/teacher/profile/:id"
+              element={
+                <ProtectedRoute>
+                  <Profile />
+                </ProtectedRoute>
+              }
+            /> */}
+            <Route
+              path="/teacher-postassignments"
+              element={
+                <ProtectedRoute>
+                  <Bookingpage />
                 </ProtectedRoute>
               }
             />

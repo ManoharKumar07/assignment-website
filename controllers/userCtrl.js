@@ -187,4 +187,5 @@ module.exports = {
   authController,
   applyTeacherController,
   getAllNotificationController,
+  deleteAllNotificationController,
 };
