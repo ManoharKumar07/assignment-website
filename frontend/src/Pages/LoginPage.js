@@ -33,13 +33,39 @@ const LoginPage = () => {
     <>
       <div className="formbox">
         <div className="form-container">
-          <Form layout="vertical" className="formw" onFinish={onfinishHandler}>
-            <h1 className="mb-4 text-2xl font-medium">Login Form</h1>
-            <Form.Item label="Email" name="email">
-              <Input type="email" required />
+          <Form
+            layout="vertical"
+            className="formw bg-[#32384E]"
+            onFinish={onfinishHandler}
+          >
+            <h1 className="mb-4 text-2xl font-medium text-white">Login Form</h1>
+            <Form.Item
+              label={
+                <span className="text-base font-bold text-[#DDE7EE]">
+                  Email
+                </span>
+              }
+              name="email"
+            >
+              <Input
+                type="email"
+                required
+                className="input input-bordered text-gray-200 input-primary w-full hello max-w-xs "
+              />
             </Form.Item>
-            <Form.Item label="Password" name="password">
-              <Input type="password" required />
+            <Form.Item
+              label={
+                <span className="text-base font-bold text-[#DDE7EE]">
+                  Password
+                </span>
+              }
+              name="password"
+            >
+              <Input
+                type="password"
+                required
+                className="input input-bordered text-gray-200 input-primary w-full hello max-w-xs "
+              />
             </Form.Item>
             <Link to="/register">
               <p className="text-blue-700"> not a user Register here?</p>

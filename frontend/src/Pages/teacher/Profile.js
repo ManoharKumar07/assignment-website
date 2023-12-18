@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Layout from "../../Components/Layout";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
-import { Col, Form, Input, Row, TimePicker, message } from "antd";
+import { Col, Form, Input, Row, message } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { showLoading, hideLoading } from "../../redux/features/alertSlice";
 import moment from "moment";
@@ -23,10 +23,6 @@ const Profile = () => {
         {
           ...values,
           userId: user._id,
-          timings: [
-            moment(values.timings[0]).format("HH:mm"),
-            moment(values.timings[1]).format("HH:mm"),
-          ],
         },
         {
           headers: {
@@ -75,7 +71,9 @@ const Profile = () => {
   }, []);
   return (
     <Layout>
-      <h1>Manage Profile</h1>
+      <h4 className="text-lg mb-3 pt-4 font-bold text-[#DDE7EE]">
+        Manage Profile :{" "}
+      </h4>
       {teacher && (
         <Form
           layout="vertical"
@@ -83,67 +81,107 @@ const Profile = () => {
           className="m-3"
           initialValues={{
             ...teacher,
-            timings: [
-              moment(teacher.timings[0], "HH:mm"),
-              moment(teacher.timings[1], "HH:mm"),
-            ],
           }}
         >
           <h4 className="">Personal Details : </h4>
           <Row gutter={20}>
             <Col xs={24} md={24} lg={8}>
               <Form.Item
-                label="First Name"
+                label={
+                  <span className="text-base font-bold text-[#DDE7EE]">
+                    First Name
+                  </span>
+                }
                 name="firstName"
                 required
                 rules={[{ required: true }]}
               >
-                <Input type="text" placeholder="your first name" />
+                <Input
+                  type="text"
+                  placeholder="your first name"
+                  className="input input-bordered text-gray-200 input-primary w-full hello max-w-xs "
+                />
               </Form.Item>
             </Col>
             <Col xs={24} md={24} lg={8}>
               <Form.Item
-                label="Last Name"
+                label={
+                  <span className="text-base font-bold text-[#DDE7EE]">
+                    Last Name
+                  </span>
+                }
                 name="lastName"
                 required
                 rules={[{ required: true }]}
               >
-                <Input type="text" placeholder="your last name" />
+                <Input
+                  type="text"
+                  placeholder="your last name"
+                  className="input input-bordered text-gray-200 input-primary w-full hello max-w-xs "
+                />
               </Form.Item>
             </Col>
             <Col xs={24} md={24} lg={8}>
               <Form.Item
-                label="Phone No"
+                label={
+                  <span className="text-base font-bold text-[#DDE7EE]">
+                    Phone no
+                  </span>
+                }
                 name="phone"
                 required
                 rules={[{ required: true }]}
               >
-                <Input type="text" placeholder="your contact no" />
+                <Input
+                  type="text"
+                  placeholder="your contact no"
+                  className="input  input-bordered text-gray-200 input-primary w-full hello max-w-xs "
+                />
               </Form.Item>
             </Col>
             <Col xs={24} md={24} lg={8}>
               <Form.Item
-                label="Email"
+                label={
+                  <span className="text-base font-bold text-[#DDE7EE]">
+                    Email
+                  </span>
+                }
                 name="email"
                 required
                 rules={[{ required: true }]}
               >
-                <Input type="email" placeholder="your email address" />
+                <Input
+                  type="email"
+                  placeholder="your email address"
+                  className="input input-bordered text-gray-200 input-primary w-full hello max-w-xs "
+                />
               </Form.Item>
             </Col>
             <Col xs={24} md={24} lg={8}>
               <Form.Item label="Website" name="website">
-                <Input type="text" placeholder="your website" />
+                <Input
+                  type="text"
+                  placeholder="your website"
+                  className="input input-bordered text-gray-200 input-primary w-full hello max-w-xs  hello"
+                />
               </Form.Item>
             </Col>
             <Col xs={24} md={24} lg={8}>
               <Form.Item
-                label="Address"
+                label={
+                  <span className="text-base font-bold text-[#DDE7EE]">
+                    Address
+                  </span>
+                }
                 name="address"
                 required
                 rules={[{ required: true }]}
               >
-                <Input type="text" placeholder="your school address" />
+                <Input
+                  type="text"
+                  placeholder="your address"
+                  className="input input-bordered text-gray-200 input-primary w-full hello max-w-xs "
+                />
               </Form.Item>
             </Col>
           </Row>
@@ -151,49 +189,49 @@ const Profile = () => {
           <Row gutter={20}>
             <Col xs={24} md={24} lg={8}>
               <Form.Item
-                label="Specialization"
+                label={
+                  <span className="text-base font-bold text-[#DDE7EE]">
+                    Specialization
+                  </span>
+                }
                 name="specialization"
                 required
                 rules={[{ required: true }]}
               >
-                <Input type="text" placeholder="your specialization" />
+                <Input
+                  type="text"
+                  placeholder="your specialization"
+                  className="input input-bordered text-gray-200 input-primary w-full hello max-w-xs "
+                />
               </Form.Item>
             </Col>
             <Col xs={24} md={24} lg={8}>
               <Form.Item
-                label="Experience"
+                label={
+                  <span className="text-base font-bold text-[#DDE7EE]">
+                    Experience
+                  </span>
+                }
                 name="experience"
                 required
                 rules={[{ required: true }]}
               >
-                <Input type="text" placeholder="your experience" />
+                <Input
+                  type="text"
+                  placeholder="your experience"
+                  className="input input-bordered text-gray-200 input-primary w-full hello max-w-xs "
+                />
               </Form.Item>
             </Col>
-            <Col xs={24} md={24} lg={8}>
-              <Form.Item
-                label="Fees Per Class"
-                name="feesPerClass"
-                required
-                rules={[{ required: true }]}
-              >
-                <Input type="text" placeholder="your contact no" />
-              </Form.Item>
-            </Col>
-            <Col xs={24} md={24} lg={8}>
-              <Form.Item label="Timings" name="timings" required>
-                <TimePicker.RangePicker format="HH:mm" />
-              </Form.Item>
-            </Col>
+
             <Col xs={24} md={24} lg={8}></Col>
-            <Col xs={24} md={24} lg={8}>
-              <button
-                className="btn btn-primary bg-blue-500 form-btn"
-                type="submit"
-              >
-                Update
-              </button>
-            </Col>
           </Row>
+          <button
+            className="btn btn-primary form-btn bg-blue-500 ml-[32rem]"
+            type="submit"
+          >
+            Update
+          </button>
         </Form>
       )}
     </Layout>

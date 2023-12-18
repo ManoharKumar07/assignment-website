@@ -22,45 +22,52 @@ function Bookingpage() {
   console.log("text: ", text);
 
   const navigate = useNavigate();
-
   const addPost = async () => {
     if (
       assignment.title === "" ||
       assignment.category === "" ||
       assignment.content === "" ||
-      assignment.thumbnail === ""
+      !thumbnail
     ) {
       message.error("Please Fill All Fields");
+      return; // Return to prevent further execution
     }
-    // console.log(blogs.content)
-    uploadImage();
+
+    try {
+      await uploadImage();
+      message.success("Post Added Successfully");
+      console.log("Before navigation");
+      navigate("/");
+      console.log("After navigation");
+    } catch (error) {
+      message.error(error);
+      console.log(error);
+    }
   };
 
-  const uploadImage = () => {
+  const uploadImage = async () => {
     if (!thumbnail) return;
+
     const imageRef = ref(storage, `blogimage/${thumbnail.name}`);
-    uploadBytes(imageRef, thumbnail).then((snapshot) => {
-      getDownloadURL(snapshot.ref).then((url) => {
-        const productRef = collection(fireDB, "assignmentPost");
-        try {
-          addDoc(productRef, {
-            assignment,
-            thumbnail: url,
-            time: Timestamp.now(),
-            date: new Date().toLocaleString("en-US", {
-              month: "short",
-              day: "2-digit",
-              year: "numeric",
-            }),
-          });
-          navigate("/");
-          message.success("Post Added Successfully");
-        } catch (error) {
-          message.error(error);
-          console.log(error);
-        }
+    const snapshot = await uploadBytes(imageRef, thumbnail);
+    const url = await getDownloadURL(snapshot.ref);
+
+    const productRef = collection(fireDB, "assignmentPost");
+
+    try {
+      await addDoc(productRef, {
+        assignment,
+        thumbnail: url,
+        time: Timestamp.now(),
+        date: new Date().toLocaleString("en-US", {
+          month: "short",
+          day: "2-digit",
+          year: "numeric",
+        }),
       });
-    });
+    } catch (error) {
+      throw error; // Re-throw the error to be caught by the calling function
+    }
   };
 
   // Create markup function
@@ -71,7 +78,7 @@ function Bookingpage() {
     window.scrollTo(0, 0);
   }, []);
   return (
-    <div className=" container mx-auto max-w-5xl py-6">
+    <div className=" container mx-auto max-w-5xl py-6 text-white">
       <div className="p-5">
         {/* Top Item  */}
         <div className="mb-2 flex justify-between">
@@ -118,7 +125,12 @@ function Bookingpage() {
         {/* Second Title Input */}
         <div className="mb-3">
           <input
-            label="Enter your Title"
+            className="input input-bordered text-gray-200 input-primary w-full hello max-w-xs "
+            label={
+              <span className="text-base font-bold text-[#DDE7EE]">
+                Enter title
+              </span>
+            }
             placeholder="Enter Your Title"
             name="title"
             value={assignment.title}
@@ -131,8 +143,13 @@ function Bookingpage() {
         {/* Third Category Input  */}
         <div className="mb-3">
           <input
-            label="Enter your Subject"
-            placeholder="Enter Your Subject"
+            className="input input-bordered text-gray-200 input-primary w-full hello max-w-xs "
+            label={
+              <span className="text-base font-bold text-[#DDE7EE]">
+                Enter due date
+              </span>
+            }
+            placeholder="Enter Due date"
             name="category"
             value={assignment.category}
             onChange={(e) =>
@@ -152,8 +169,20 @@ function Bookingpage() {
             settext(editor.getContent({ format: "text" }));
           }}
           init={{
+            forced_root_block: "", // Set to empty string to disable wrapping with any block tag
+            formats: {
+              removeformat: [
+                {
+                  selector: "*",
+                  remove: "all",
+                  split: true,
+                  expand: false,
+                  block_expand: true,
+                },
+              ],
+            },
             plugins:
-              "a11ychecker advcode advlist advtable anchor autocorrect autolink autoresize autosave casechange charmap checklist code codesample directionality editimage emoticons export footnotes formatpainter fullscreen help image importcss inlinecss insertdatetime link linkchecker lists media mediaembed mentions mergetags nonbreaking pagebreak pageembed permanentpen powerpaste preview quickbars save searchreplace table tableofcontents template  tinydrive tinymcespellchecker typography visualblocks visualchars wordcount",
+              "a11ychecker advcode advlist advtable anchor autocorrect autolink autoresize autosave casechange charmap checklist code codesample directionality editimage emoticons export footnotes formatpainter fullscreen help image importcss inlinecss insertdatetime link linkchecker lists media mediaembed mentions mergetags nonbreaking pagebreak pageembed permanentpen powerpaste preview quickbars save searchreplace table tableofcontents template tinydrive tinymcespellchecker typography visualblocks visualchars wordcount",
           }}
         />
 
@@ -164,7 +193,7 @@ function Bookingpage() {
 
         {/* Six Preview Section  */}
         <div className="">
-          {/* <h1 className=" text-center mb-3 text-2xl">Preview</h1> */}
+          <h1 className=" text-center mb-3 text-2xl">Preview</h1>
           <div className="content">
             <div
               dangerouslySetInnerHTML={createMarkup(assignment.content)}

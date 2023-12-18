@@ -10,7 +10,7 @@
   min-height: 100%;
   width: 300px;
   border-radius: 5px;
-  background-color: rgba(60, 190, 43, 0.959);
+  background-color: #006075;
   box-shadow: 0 0 2px gray;
   margin-right: 20px;
   color: white;
@@ -25,13 +25,13 @@
   height: 10vh;
   margin-bottom: 20px;
   box-shadow: 0 0 2px gray;
-  background-color: white;
+  /* background-color: white; */
 }
 .body {
   height: 85vh;
   margin-bottom: 20px;
   box-shadow: 0 0 2px gray;
-  background-color: white;
+  /* background-color: white; */
 }
 .logo h6 {
   font-size: 1.5rem;
@@ -54,7 +54,7 @@
   margin: 0 15px;
 }
 .active {
-  background-color: rgb(10, 124, 23);
+  background-color: #007f68;
   padding: 10px;
 }
 .active a,

@@ -13,6 +13,9 @@ import NotificationPage from "./Pages/NotificationPage";
 import Users from "./Pages/admin/Users";
 import Teachers from "./Pages/admin/Teachers";
 import Bookingpage from "./Pages/Bookingpage";
+import Profile from "./Pages/teacher/Profile";
+import AssignmentInfo from "./Pages/assignmentInfo";
+import Assignmentview from "./Pages/Assignmentview";
 
 function App() {
   const { loading } = useSelector((state) => state.alerts);
@@ -79,19 +82,35 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            {/* <Route
+            <Route
               path="/teacher/profile/:id"
               element={
                 <ProtectedRoute>
                   <Profile />
                 </ProtectedRoute>
               }
-            /> */}
+            />
             <Route
               path="/teacher-postassignments"
               element={
                 <ProtectedRoute>
                   <Bookingpage />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/assignmentinfo/:id"
+              element={
+                <ProtectedRoute>
+                  <AssignmentInfo />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/assignments"
+              element={
+                <ProtectedRoute>
+                  <Assignmentview />
                 </ProtectedRoute>
               }
             />

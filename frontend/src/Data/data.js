@@ -35,7 +35,7 @@ export const adminMenu = [
     icon: "fa-solid fa-person-chalkboard",
   },
   {
-    name: "Users",
+    name: "Students",
     path: "/admin/students",
     icon: "fa-solid fa-user",
   },

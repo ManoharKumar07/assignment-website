@@ -43,98 +43,167 @@ const ApplyTeacher = () => {
   };
   return (
     <Layout>
-      <h1 className="text-center">Apply Teacher</h1>
+      {/* <h1 className="text-center text-2xl mb-3 font-bold text-[#DDE7EE]">Apply Teacher</h1> */}
       <Form layout="vertical" onFinish={handleFinish} className="m-3">
-        <h4 className="mb-2">Personal Details : </h4>
+        <h4 className="text-lg mb-3 pt-4 font-bold text-[#DDE7EE]">
+          Personal Details :{" "}
+        </h4>
         <Row gutter={20}>
           <Col xs={24} md={24} lg={8}>
             <Form.Item
-              label="First Name"
+              label={
+                <span className="text-base font-bold text-[#DDE7EE]">
+                  First Name
+                </span>
+              }
               name="firstName"
               required
               rules={[{ required: true }]}
+              labelCol={{ span: 8 }}
+              wrapperCol={{ span: 16 }}
             >
-              <Input type="text" placeholder="your first name" />
+              <Input
+                type="text"
+                placeholder="your first name"
+                className="input input-bordered text-gray-200 input-primary w-full hello max-w-xs "
+              />
             </Form.Item>
           </Col>
           <Col xs={24} md={24} lg={8}>
             <Form.Item
-              label="Last Name"
+              label={
+                <span className="text-base font-bold text-[#DDE7EE]">
+                  Last Name
+                </span>
+              }
               name="lastName"
               required
               rules={[{ required: true }]}
             >
-              <Input type="text" placeholder="your last name" />
+              <Input
+                type="text"
+                placeholder="your last name"
+                className="input input-bordered text-gray-200 input-primary w-full hello max-w-xs "
+              />
             </Form.Item>
           </Col>
           <Col xs={24} md={24} lg={8}>
             <Form.Item
-              label="Phone No"
+              label={
+                <span className="text-base font-bold text-[#DDE7EE]">
+                  Phone No
+                </span>
+              }
               name="phone"
               required
               rules={[{ required: true }]}
             >
-              <Input type="text" placeholder="your contact no" />
+              <Input
+                type="text"
+                placeholder="your contact no"
+                className="input input-bordered text-gray-200 input-primary w-full hello max-w-xs "
+              />
             </Form.Item>
           </Col>
           <Col xs={24} md={24} lg={8}>
             <Form.Item
-              label="Email"
+              label={
+                <span className="text-base font-bold text-[#DDE7EE]">
+                  Email
+                </span>
+              }
               name="email"
               required
               rules={[{ required: true }]}
             >
-              <Input type="email" placeholder="your email address" />
-            </Form.Item>
-          </Col>
-          <Col xs={24} md={24} lg={8}>
-            <Form.Item label="Website" name="website">
-              <Input type="text" placeholder="your website" />
+              <Input
+                type="email"
+                placeholder="your email address"
+                className="input input-bordered text-gray-200 input-primary w-full hello max-w-xs "
+              />
             </Form.Item>
           </Col>
           <Col xs={24} md={24} lg={8}>
             <Form.Item
-              label="Address"
+              label={
+                <span className="text-base font-bold text-[#DDE7EE]">
+                  Website
+                </span>
+              }
+              name="website"
+            >
+              <Input
+                type="text"
+                placeholder="your website"
+                className="input input-bordered text-gray-200 input-primary w-full hello max-w-xs "
+              />
+            </Form.Item>
+          </Col>
+          <Col xs={24} md={24} lg={8}>
+            <Form.Item
+              label={
+                <span className="text-base font-bold text-[#DDE7EE]">
+                  Address
+                </span>
+              }
               name="address"
               required
               rules={[{ required: true }]}
             >
-              <Input type="text" placeholder="your  address" />
+              <Input
+                type="text"
+                placeholder="your  address"
+                className="input input-bordered text-gray-200 input-primary w-full hello max-w-xs "
+              />
             </Form.Item>
           </Col>
         </Row>
-        <h4 className="mb-2">Professional Details :</h4>
         <Row gutter={20}>
           <Col xs={24} md={24} lg={8}>
             <Form.Item
-              label="Specialization"
+              label={
+                <span className="text-base font-bold text-[#DDE7EE]">
+                  Specialization
+                </span>
+              }
               name="specialization"
               required
               rules={[{ required: true }]}
             >
-              <Input type="text" placeholder="your specialization" />
+              <Input
+                type="text"
+                placeholder="your specialization"
+                className="input input-bordered text-gray-200 input-primary w-full hello max-w-xs "
+              />
             </Form.Item>
           </Col>
           <Col xs={24} md={24} lg={8}>
             <Form.Item
-              label="Experience"
+              label={
+                <span className="text-base font-bold text-[#DDE7EE]">
+                  Experience
+                </span>
+              }
               name="experience"
               required
               rules={[{ required: true }]}
             >
-              <Input type="text" placeholder="your experience" />
+              <Input
+                type="text"
+                placeholder="your experience"
+                className="input input-bordered text-gray-200 input-primary w-full hello max-w-xs "
+              />
             </Form.Item>
           </Col>
 
-          <Col xs={24} md={24} lg={8} className="text-center mt-4">
-            <button
-              className="btn btn-primary form-btn bg-blue-500"
-              type="submit"
-            >
-              Submit
-            </button>
-          </Col>
+          <Col xs={24} md={24} lg={8} className="text-center mt-4"></Col>
         </Row>
+        <button
+          className="btn btn-primary form-btn bg-blue-500 ml-[32rem]"
+          type="submit"
+        >
+          Submit
+        </button>
       </Form>
     </Layout>
   );

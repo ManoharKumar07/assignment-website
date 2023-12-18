@@ -8,6 +8,11 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: transparent;
+  /* overflow-y: hidden; */
+}
+
 /* loader */
 .spinner {
   height: 100vh;
@@ -16,4 +21,8 @@
   justify-content: center;
   z-index: 999;
   background-color: rgba(0, 0, 0, 0.552);
+}
+
+.hello::placeholder {
+  color: #718096; /* Adjust the color to your desired grey shade */
 }

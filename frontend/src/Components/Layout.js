@@ -47,7 +47,7 @@ const Layout = ({ children }) => {
     <>
       <div className="main">
         <div className="layout">
-          <div className="sidebar">
+          <div className="sidebar h-screen">
             <div className="logo text-center">
               <img
                 className="h-20 w-35 ml-5 mt-2"
@@ -84,13 +84,20 @@ const Layout = ({ children }) => {
                     navigate("/notification");
                   }}
                 >
-                  <i class="fa-solid fa-bell"></i>
+                  <div className=" text-white pt-4">
+                    <i class="fa-solid fa-bell"></i>
+                  </div>
                 </Badge>
 
-                <Link to="/profile">{user?.name}</Link>
+                <Link
+                  className=" text-white pt-[0.99rem] font-semibold"
+                  to="/profile"
+                >
+                  {user?.name}
+                </Link>
               </div>
             </div>
-            <div className="body">{children}</div>
+            <div className="body h-auto">{children}</div>
           </div>
         </div>
       </div>

@@ -2,7 +2,7 @@ const express = require("express");
 const {
   getAllUsersController,
   getAllTeachersController,
-  //   changeAccountStatusController,
+  changeAccountStatusController,
 } = require("../controllers/adminCtrl");
 const authMiddleware = require("../middlewares/authMiddleware");
 
@@ -15,10 +15,10 @@ router.get("/getAllUsers", getAllUsersController);
 router.get("/getAllTeachers", authMiddleware, getAllTeachersController);
 
 // //POST ACCOUNT STATUS
-// router.post(
-//   "/changeAccountStatus",
-//   authMiddleware,
-//   changeAccountStatusController
-// );
+router.post(
+  "/changeAccountStatus",
+  authMiddleware,
+  changeAccountStatusController
+);
 
 module.exports = router;

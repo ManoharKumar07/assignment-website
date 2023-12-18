@@ -31,16 +31,53 @@ const RegisterPage = () => {
     <>
       <div className="formbox">
         <div className="form-container">
-          <Form layout="vertical" className="formw" onFinish={onfinishHandler}>
-            <h1 className="mb-4 text-2xl font-medium">Register Form</h1>
-            <Form.Item label="Name" name="name">
-              <Input type="text" required />
+          <Form
+            layout="vertical"
+            className="formw bg-[#32384E]"
+            onFinish={onfinishHandler}
+          >
+            <h1 className="mb-4 text-2xl font-medium text-white">
+              Register Form
+            </h1>
+            <Form.Item
+              label={
+                <span className="text-base font-bold text-[#DDE7EE]">Name</span>
+              }
+              name="name"
+            >
+              <Input
+                type="text"
+                required
+                className="input input-bordered text-gray-200 input-primary w-full hello max-w-xs "
+              />
             </Form.Item>
-            <Form.Item label="Email" name="email">
-              <Input type="email" required />
+            <Form.Item
+              label={
+                <span className="text-base font-bold text-[#DDE7EE]">
+                  Email
+                </span>
+              }
+              name="email"
+            >
+              <Input
+                type="email"
+                required
+                className="input input-bordered text-gray-200 input-primary w-full hello max-w-xs "
+              />
             </Form.Item>
-            <Form.Item label="Password" name="password">
-              <Input type="password" required />
+            <Form.Item
+              label={
+                <span className="text-base font-bold text-[#DDE7EE]">
+                  Password
+                </span>
+              }
+              name="password"
+            >
+              <Input
+                type="password"
+                required
+                className="input input-bordered text-gray-200 input-primary w-full hello max-w-xs "
+              />
             </Form.Item>
             <Link to="/login">
               <p className="text-blue-700"> Already user login here?</p>

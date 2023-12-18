@@ -128,7 +128,6 @@ const getAllNotificationController = async (req, res) => {
       message: "all notification marked as read",
       data: updatedUser,
     });
-    window.location.reload();
   } catch (error) {
     console.log(error);
     res.status(500).send({
